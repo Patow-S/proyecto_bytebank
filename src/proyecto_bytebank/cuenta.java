@@ -3,37 +3,54 @@ package proyecto_bytebank;
 public class cuenta {
 
 	int nombre;
-	String apellido;
-	double saldo;
-	String agencia;
+	String apellido;                                  
+	private double saldo; 	                    // si esta private , saldo no es accesible 
+	private int agencia;
+	private int numero ;
 	cliente titular = new cliente();
 
-	// No retorna valor
-	public void depositar(double valor) {
-		// apunta a un objeto en especifico
-		// rm : this.saldo = this.saldo + valor;
-		this.saldo += valor;
+	public void depositar(double valor) { 	    // No retorna valor
+		this.saldo += valor;   		            // apunta a un objeto en especifico / rm : this.saldo = this.saldo + valor;
+
 	}
 
-	// Retorna valor
-	public boolean retirar(double valor) {
-		if (this.saldo >= valor) {
-			this.saldo = -valor;
+	public boolean retirar(double valor) { 	    // Retorna valor
+		if (this.saldo >= valor) { 
+			this.saldo -= valor;
 			return true;
 		}
-		return false;
-		/* else { return false;} */
+		return false;                           /* else { return false;} */
 	}
 
 	public boolean transferir(double valor, cuenta cuenta1) {
 		if (this.saldo >= valor) {
-			this.saldo = this.saldo - valor;
+			this.saldo -= this.saldo - valor;
 			cuenta1.saldo = cuenta1.saldo + valor;
 			return true;
 		} else {
 			return false;
 		}
-
+	}
+	
+	public double getSaldo(){  //obtener
+		return this.saldo;
+	}
+	
+	public void setAgencia(int agencia) {    //asignar
+		
+		if (agencia > 0 ) {
+			this.agencia = agencia; 
+		} else {
+			System.out.println("valores negativos , no permitido");
+		}
+	}
+	//Buenas practicas
+	public int getAgencia() {
+		return agencia;
+	}
+	
+	public void setTitular(cliente titular) {
+		this.titular = titular;
 	}
 
 	public static void main(String[] args) {
