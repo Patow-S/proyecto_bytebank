@@ -1,7 +1,5 @@
 package proyecto_bytebank;
 
-import proyecto_bytebank.cuenta.cuenta1;
-
 public class TestReferencia {
 	public static void main(String[] args) {
 		

@@ -1,13 +1,26 @@
 package proyecto_bytebank;
 
-public class cuenta {
+class Cuenta {
 
 	int nombre;
 	String apellido;                                  
 	private double saldo; 	                    // si esta private , saldo no es accesible 
 	private int agencia;
 	private int numero ;
-	cliente titular = new cliente();
+	Cliente titular = new Cliente();
+	
+	private static int total= 0; 
+	
+	public Cuenta (int agencia) {
+    	if (agencia <= 0){ 
+    		System.out.println("no se permite 0");
+    	}else {
+    		this.agencia = agencia;
+    	}
+    	total++;
+    	System.out.println("Aqui se crea una nueva cuenta   ");
+    	System.out.println("se van creando: " + total + " cuentas");
+    }    
 
 	public void depositar(double valor) { 	    // No retorna valor
 		this.saldo += valor;   		            // apunta a un objeto en especifico / rm : this.saldo = this.saldo + valor;
@@ -22,7 +35,7 @@ public class cuenta {
 		return false;                           /* else { return false;} */
 	}
 
-	public boolean transferir(double valor, cuenta cuenta1) {
+	public boolean transferir(double valor, Cuenta cuenta1) {
 		if (this.saldo >= valor) {
 			this.saldo -= this.saldo - valor;
 			cuenta1.saldo = cuenta1.saldo + valor;
@@ -32,11 +45,11 @@ public class cuenta {
 		}
 	}
 	
-	public double getSaldo(){  //obtener
+	public double getSaldo(){                    //obtener
 		return this.saldo;
 	}
 	
-	public void setAgencia(int agencia) {    //asignar
+	public void setAgencia(int agencia) {        //asignar
 		
 		if (agencia > 0 ) {
 			this.agencia = agencia; 
@@ -44,22 +57,27 @@ public class cuenta {
 			System.out.println("valores negativos , no permitido");
 		}
 	}
-	//Buenas practicas
+	
+	                                              //Buenas practicas
 	public int getAgencia() {
 		return agencia;
 	}
 	
-	public void setTitular(cliente titular) {
+	public void setTitular(Cliente titular) {
 		this.titular = titular;
+	}
+	
+	public int getTotal() {
+		return Cuenta.total;
 	}
 
 	public static void main(String[] args) {
 
-		cuenta primeraCuenta = new cuenta();
+		Cuenta primeraCuenta = new Cuenta();
 		primeraCuenta.saldo = 100;
 		System.out.println(primeraCuenta.saldo);
 
-		cuenta segundaCuenta = new cuenta();
+		Cuenta segundaCuenta = new Cuenta();
 		segundaCuenta.apellido = "patow";
 		System.out.println(segundaCuenta.apellido);
 

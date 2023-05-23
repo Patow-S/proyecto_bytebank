@@ -1,9 +1,10 @@
 package proyecto_bytebank;
 
-public class cliente {
+public class Cliente {
 	 private String nombre;
 	 private String documento;
 	 private String tlf;
+	 
 	public String getNombre() {
 		return nombre;
 	}

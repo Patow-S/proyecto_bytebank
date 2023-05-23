@@ -2,7 +2,7 @@ package proyecto_bytebank;
 
 public class pruebaAcceso {
 	public static void main(String[] args) {
-		cuenta sofiaCuenta = new cuenta();
+		Cuenta sofiaCuenta = new Cuenta();
 		sofiaCuenta.setAgencia  (-32);
 		sofiaCuenta.depositar(400);
 		sofiaCuenta.retirar(300);

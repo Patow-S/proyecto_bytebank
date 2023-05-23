@@ -3,7 +3,7 @@ package proyecto_bytebank;
 
 public class pruebaMetodos {
 	public static void main(String[] args) {
-		cuenta miCuenta = new cuenta();
+		Cuenta miCuenta = new Cuenta();
 		miCuenta.saldo =300;
 		miCuenta.depositar(200);
 		
@@ -13,7 +13,7 @@ public class pruebaMetodos {
 		System.out.println(miCuenta.saldo);
 
 		
-		cuenta DiegoCuenta = new cuenta();
+		Cuenta DiegoCuenta = new Cuenta();
 		DiegoCuenta.depositar(1000);
 		
 		if (DiegoCuenta.transferir(400, miCuenta)) {
